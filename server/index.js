@@ -1,3 +1,5 @@
+const authRoute = require('./routes/authRoute');
+
 const app = require('./app');
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -14,3 +16,5 @@ mongoose.connect(MONGO_URI).then(() => {
 app.listen(3001, () => {
   console.log('server running on port 3001');
 });
+
+app.use('/auth', authRoute);
