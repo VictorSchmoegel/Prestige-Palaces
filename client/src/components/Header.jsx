@@ -1,4 +1,5 @@
 import { FaSearch } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -23,7 +24,9 @@ export default function Header() {
           <ul className='flex gap-4'>
             <li className='hidden sm:inline text-slate-700 hover:underline cursor-pointer'>Home</li>
             <li className='hidden sm:inline text-slate-700 hover:underline cursor-pointer'>About</li>
-            <li className='text-slate-700 hover:underline cursor-pointer'>Sign Up</li>
+            <Link to='/signin'>
+              <li className='text-slate-700 hover:underline cursor-pointer'>Sign In</li>
+            </Link>
           </ul>
       </div>
     </header>
