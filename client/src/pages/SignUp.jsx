@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignUp() {
   return (
     <main className='max-w-lg mx-auto p-3'>
         <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form className='flex flex-col gap-4'>
+          <input
+            className='border p-3 rounded-lg'
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
           <input
             className='border p-3 rounded-lg'
             id="email"
@@ -27,7 +33,7 @@ export default function SignIn() {
         >
           Continue With Google
         </button>
-        <p>Dont have an account? <Link to='/signup'><span className='text-blue-500'>Sign up</span></Link></p>
+        <p>Have an account? <Link to='/signin'><span className='text-blue-500'>Sign in</span></Link></p>
       </form>
     </main>
   )
