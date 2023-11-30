@@ -1,6 +1,7 @@
 const User = require('../model/userModel');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const errorHandler = require('../middlewares/errorHandler');
 
 const userSignUp = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -16,23 +17,18 @@ const userSignUp = async (req, res, next) => {
 
 const userSignIn = async (req, res, next) => {
   const { email, password } = req.body;
-
   try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'User not found' });
-
-    const correctPassword = bcryptjs.compareSync(password, user.password);
-
-    if (!correctPassword) return res.status(401).json({ message: 'Wrong credentials' });
-
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    const { password: pass, ...rest } = user._doc;
+    const validUser = await User.findOne({ email });
+    if (!validUser) return next(errorHandler(404, 'User not found!'));
+    const validPassword = bcryptjs.compareSync(password, validUser.password);
+    if (!validPassword) return next(errorHandler(401, 'Wrong credentials!'));
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    const { password: pass, ...rest } = validUser._doc;
     console.log(pass);
     res
-      .cookie('token', token, { httpOnly: true })
+      .cookie('access_token', token, { httpOnly: true })
       .status(200)
       .json(rest);
-
   } catch (error) {
     next(error);
   }
