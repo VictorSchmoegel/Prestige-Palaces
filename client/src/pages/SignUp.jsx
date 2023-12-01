@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -80,11 +81,7 @@ export default function SignUp() {
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>
-        <button
-          className='bg-red-700 text-white p-3 rounded-lg uppercase'
-        >
-          Continue With Google
-        </button>
+        <OAuth />
         <p>Have an account? <Link to='/signin'><span className='text-blue-500'>Sign in</span></Link></p>
       </form>
       {error && <p className='text-red-500 mt-5'>{error}</p>}
