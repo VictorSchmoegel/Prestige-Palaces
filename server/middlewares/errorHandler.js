@@ -1,6 +1,6 @@
-const errorHandler = (status, message) => {
+const errorHandler = (statusCode, message) => {
   const error = new Error();
-  error.status = status;
+  error.statusCode = statusCode;
   error.message = message;
   return error;
 };

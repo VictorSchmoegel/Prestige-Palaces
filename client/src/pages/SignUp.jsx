@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -42,6 +42,7 @@ export default function SignUp() {
     } catch (error) {
       setLoading(false);
       setError(error.message);
+      console.log(error);
     }
   };
 
@@ -86,7 +87,7 @@ export default function SignUp() {
         </button>
         <p>Have an account? <Link to='/signin'><span className='text-blue-500'>Sign in</span></Link></p>
       </form>
-      {error && <p className='text-red-500'>{error}</p>}
+      {error && <p className='text-red-500 mt-5'>{error}</p>}
     </main>
   )
 }
