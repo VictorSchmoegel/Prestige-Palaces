@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const router = require('./routes/route');
 require('dotenv').config();
 const authRoute = require('./routes/authRoute');
+const cookieParser = require('cookie-parser');
+const userRoute = require('./routes/userRoute');
 
 const app = express();
 app.use(express.json());
 app.use(router);
+app.use(cookieParser());
 
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -21,6 +24,7 @@ app.listen(3000, () => {
 });
 
 app.use('/server/auth', authRoute);
+app.use('/server/user', userRoute);
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
