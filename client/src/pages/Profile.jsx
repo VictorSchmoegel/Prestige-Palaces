@@ -14,6 +14,7 @@ export default function Profile() {
   const [filePercent, setFilePercent] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(null);
   const [formData, setFormData] = useState({});
+  const [updateSuccess, setUpdateSuccess] = useState(false);
 
   useEffect(() => {
     if (file) {
@@ -65,6 +66,7 @@ export default function Profile() {
         return;
       }
       dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error.message));
     }
@@ -137,7 +139,8 @@ export default function Profile() {
         <span className='text-red-700 cursor-pointer'>Delete Account</span>
         <span className='text-red-700 cursor-pointer'>Sign Out</span>
       </section>
-      <p className='text-red-700 cursor-pointer'>{error ? error : ''}</p>
+      <p className='text-red-700'>{error ? error : ''}</p>
+      <p className='text-green-700'>{updateSuccess ? 'Update Success' : ''}</p>
     </main>
   )
 }
