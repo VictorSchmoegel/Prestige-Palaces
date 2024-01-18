@@ -1,10 +1,14 @@
-const test = (req, res, next) => {
-  res.status(200).json({
-    message: 'Test successful'
-  });
-  next();
+const Listing = require('../model/listingModel');
+
+const createListing = async (req, res, next) => {
+  try {
+    const listing = await Listing.create(req.body);
+    return res.status(201).json(listing);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
-  test,
+  createListing,
 };
