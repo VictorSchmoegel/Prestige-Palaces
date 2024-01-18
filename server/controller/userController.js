@@ -1,6 +1,7 @@
 const errorHandler = require('../middlewares/errorHandler');
 const bcryptjs = require('bcryptjs');
 const User = require('../model/userModel.js');
+const Listing = require('../model/listingModel.js');
 
 const createUser = (req, res) => {
   res.json({
@@ -51,8 +52,20 @@ const deleteUser = async (req, res, next) => {
 
 };
 
+const getUserListings = async (req, res, next) => {
+  if (req.user.id === req.params.id) {
+    try {
+      const listings = await Listing.find({ userRef: req.params.id });
+      res.status(200).json(listings);
+    } catch (error) {
+      next(error);
+    }
+  }
+};
+
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  getUserListings,
 };
