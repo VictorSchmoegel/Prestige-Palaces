@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useSelector, useDispatch } from "react-redux";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "../firebase";
 import {
@@ -174,10 +175,12 @@ export default function Profile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
-        <button
-          className='bg-green-700 text-white p-3 rounded-lg uppercase hover:opacity-95'>
+        <Link
+          className='bg-green-700 text-white p-3 rounded-lg uppercase hover:opacity-95 text-center'
+          to='/create'
+        >
           Create listing
-        </button>
+        </Link>
       </form>
       <section className='flex justify-between mt-5'>
         <span
