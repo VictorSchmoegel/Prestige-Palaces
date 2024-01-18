@@ -5,7 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
-import CreateListing from "./pages/Listing";
+import CreateListing from "./pages/CreateListing";
 
 function App() {
 
