@@ -63,9 +63,22 @@ const getUserListings = async (req, res, next) => {
   }
 };
 
+const getUser = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return next(errorHandler(404, 'User not found'));
+    // eslint-disable-next-line no-unused-vars
+    const { password, ...rest } = user._doc;
+    res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
   updateUser,
   deleteUser,
   getUserListings,
+  getUser,
 };
