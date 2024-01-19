@@ -33,13 +33,7 @@ app.use('/server/auth', authRoute);
 app.use('/server/user', userRoute);
 app.use('/server/listing', listingRoute);
 
-app.use(express.static(path.join(__dirname, '../client'), {
-  setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.js')) {
-      res.setHeader('Content-Type', 'text/javascript');
-    }
-  },
-}));
+app.use(express.static(path.join(__dirname, 'client/src')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
