@@ -36,7 +36,7 @@ app.use('/server/listing', listingRoute);
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist'));
+  res.sendFile(path.join(process.cwd(), 'client', 'dist', 'index.html'));
 });
 
 // eslint-disable-next-line no-unused-vars
