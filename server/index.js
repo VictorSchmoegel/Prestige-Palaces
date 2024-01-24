@@ -33,10 +33,10 @@ app.use('/server/auth', authRoute);
 app.use('/server/user', userRoute);
 app.use('/server/listing', listingRoute);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '/client')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client'));
 });
 
 // eslint-disable-next-line no-unused-vars
