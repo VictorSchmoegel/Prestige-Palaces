@@ -8,11 +8,6 @@ const listingRoute = require('./server/routes/listingRoute');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 
-const app = express();
-app.use(express.json());
-app.use(router);
-app.use(cookieParser());
-
 const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
@@ -23,6 +18,11 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+const app = express();
+app.use(express.json());
+app.use(router);
+app.use(cookieParser());
 
 
 app.listen(3000, () => {
