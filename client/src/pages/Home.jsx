@@ -55,8 +55,7 @@ export default function Home() {
           place with ease
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
-          Prestige Palaces is the best place to find your next perfect place to
-          live.
+          Welcome to PrestigePalaces, where luxury real estate meets cutting-edge technology. Our platform, built with MongoDB, Express, Node.js, React, Redux, and Tailwind CSS, offers a seamless experience for finding your dream property. Explore our curated collection of exquisite homes, from urban penthouses to serene estates, and embark on a journey of luxury living with PrestigePalaces.
           <br />
           We have a wide range of properties for you to choose from.
         </div>
